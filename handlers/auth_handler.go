@@ -34,7 +34,7 @@ func (h *AuthHandler) SendOTP(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "داده‌های ارسالی نامعتبر است",
+			"message": "داده‌های ارسالی نامعتبر است",
 		})
 		return
 	}
@@ -45,7 +45,7 @@ func (h *AuthHandler) SendOTP(c *gin.Context) {
 	otpCode, err := h.authService.SendOTP(ctx, req.Phone)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": err.Error(),
+			"message": err.Error(),
 		})
 		return
 	}
@@ -63,7 +63,7 @@ func (h *AuthHandler) VerifyOTP(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "داده‌های ارسالی نامعتبر است",
+			"message": "داده‌های ارسالی نامعتبر است",
 		})
 		return
 	}
@@ -74,7 +74,7 @@ func (h *AuthHandler) VerifyOTP(c *gin.Context) {
 	user, token, err := h.authService.VerifyOTP(ctx, req.Phone, req.Code)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": err.Error(),
+			"message": err.Error(),
 		})
 		return
 	}
