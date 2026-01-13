@@ -1,8 +1,8 @@
 package entity
 
 type Game struct {
-	ID       int
-	Category string
-	Question []Question
-	Players  []User
+	ID          int
+	Category    string
+	QuestionIDs []int
+	PlayerIDs   []int
 }
