@@ -2,7 +2,22 @@ package entity
 
 type Game struct {
 	ID          int
-	Category    string
+	CategoryID  int
 	QuestionIDs []int
-	PlayerIDs   []int
+	PlayerIDs   []Player
+}
+
+type Player struct {
+	ID      int
+	UserID  int
+	GameID  int
+	Score   int
+	Answers []PlayerAnswer
+}
+
+type PlayerAnswer struct {
+	ID         int
+	PlayerID   int
+	QuestionID int
+	Choice     PossibleAnswerChoiceType
 }
