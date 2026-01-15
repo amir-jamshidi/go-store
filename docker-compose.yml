@@ -1,0 +1,18 @@
+services:
+  game-db:
+    image: docker.arvancloud.ir/mysql:8
+    ports:
+      - "3308:3606"
+    container_name: game-db
+    volumes:
+      - dbdata:/var/lib/mysql
+    restart: always
+    command: ["mysqld"]
+    environment:
+      MYSQL_ROOT_PASSWORD: gameapp1
+      MYSQL_DATABASE: gamapp2
+      MYSQL_USER: gamapp3
+      MYSQL_PASSWORD: gamapp4
+
+volumes:
+  dbdata:
